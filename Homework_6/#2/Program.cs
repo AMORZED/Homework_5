@@ -1,10 +1,11 @@
-﻿namespace _2
+﻿namespace Homework_6
 {
     internal class Program
     {
         static void Main(string[] args)
         {
             Random rnd = new Random();
+
             Console.WriteLine("Введите количество строк в матрицах:");
             int AmmountOfStrokes = int.Parse(Console.ReadLine());
 
@@ -13,7 +14,8 @@
 
             Console.WriteLine("Массив А:");
             int[,] mass_A = new int[AmmountOfStrokes, AmmountOfColumns];
-            for (int i = 0; i < mass_A.GetLength(0); i++)
+
+            for (int i = 0; i < mass_A.GetLength(0); i++) //Заполнение массива А случайными цифрами
             {
              for (int j = 0; j < mass_A.GetLength(1); j++)
                 {
@@ -23,7 +25,7 @@
                 Console.WriteLine();
             }
 
-            Console.WriteLine("\nМассив B:");
+            Console.WriteLine("\nМассив B:"); //Заполнение массива B случайными цифрами
             int[,] mass_B = new int[AmmountOfStrokes, AmmountOfColumns];
             for (int i = 0; i < mass_A.GetLength(0); i++)
             {
@@ -34,9 +36,11 @@
                 }
                 Console.WriteLine();
             }
+
             Console.WriteLine("\nРезультат:");
             int[,] mass_C = new int[AmmountOfStrokes, AmmountOfColumns];
-            for(int i = 0;i < mass_C.GetLength(0);i++)
+
+            for(int i = 0;i < mass_C.GetLength(0);i++) //Заполнение массива C суммой сложенных чисел из массивов A и B
             {
                 for(int j = 0;j < mass_C.GetLength(1); j++)
                 {

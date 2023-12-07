@@ -28,12 +28,12 @@ namespace Homework_6
         }
         static object Operate(ref string word, ref string[] mass)
         {
-            if (mass == null | mass.Length == 0)
+            if (mass == null | mass.Length == 0) //Проверка массива на валидность
             {
                 Console.WriteLine("\nМассив невалиден(пуст)!");
                 return null;
             }
-            else if (word == null | string.IsNullOrEmpty(word) == true)
+            else if (word == null | string.IsNullOrEmpty(word) == true) //Проверка строки на валидность
             {
                 Console.WriteLine("\nСтрока невалидна(пуста)!");
                 return null;
@@ -42,7 +42,7 @@ namespace Homework_6
             {
                 for (int i = 0; i < mass.Length; i++)
                 {
-                    if (mass[i] == word)
+                    if (mass[i] == word) //Сравнение значений массива и строки.
                     {
                         Console.WriteLine("\nМассив уже содержит этот элемент, изменений не произошло!");
                         return mass;
@@ -52,7 +52,7 @@ namespace Homework_6
                 }
                 for (int i = 0; i < mass.Length; i++)
                 {
-                    if (mass[i] == null | string.IsNullOrEmpty(mass[i]) == true)
+                    if (mass[i] == null | string.IsNullOrEmpty(mass[i]) == true) //Поиск невалидных значений в массиве
                     {
                         Console.WriteLine($"\nЭлемент в массиве с индексом '{i}' оказался пустым, поэтому ему присвоено значение '{word}'!");
                         mass[i] = word;
@@ -61,8 +61,8 @@ namespace Homework_6
                 }
 
                 Console.WriteLine("\nВ массиве нет места для нового элемента, поэтому он будет расширен на один элемент!");
-                Array.Resize(ref mass, mass.Length + 1);
-                mass[mass.Length - 1] = word;
+                Array.Resize(ref mass, mass.Length + 1); //Расширение массива на +1 элемент
+                mass[mass.Length - 1] = word; //Присваивание послежнему элементу в новом массиве значения строки
                 return mass;
             }
         }
