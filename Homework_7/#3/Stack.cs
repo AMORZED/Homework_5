@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Channels;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ namespace _Stack
     public class Stack
     {       
         private object[] stack = new object[5] {"String", 27015, 15.32D, 'A', default(bool)};
-
+        public object lastRemovedMember; //Переменная, содержащая последний удаленный элемент
         public void Show() //Отображение текущего содержимого стека
         {
             Console.WriteLine("Текущее содержимое стека:");
@@ -34,10 +35,17 @@ namespace _Stack
             stack[stack.Length - 1] = newMember;
         }
 
-        public void Remove() //Удаление одного элемента из стека
-        {            
-            if (stack.Length == 0) Console.WriteLine("Стек уже пуст!");
-            else Array.Resize(ref stack, stack.Length - 1);
+        public void Pop() //Возврат верхнего элемента из стека
+        {
+            if (stack == null | stack.Length == 0)
+            {
+                Console.WriteLine("Стек пуст!");
+            }
+            else
+            {
+                lastRemovedMember = stack[stack.Length - 1];
+                Array.Resize(ref stack, stack.Length - 1);
+            }
         }
     }
 }

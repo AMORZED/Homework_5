@@ -12,7 +12,7 @@ namespace Homework_7
             int[] originalArray = new int[5];
             for (int i = 0; i < originalArray.Length; i++)
             {
-                originalArray[i] = rnd.Next(1, 11);
+                originalArray[i] = rnd.Next(1, 101);
                 Console.Write(originalArray[i] + " ");
             }
             

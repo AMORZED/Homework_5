@@ -9,16 +9,8 @@ namespace Homework_7
             Stack st = new Stack(); //Объектная переменная для класса Stack
 
             st.Show();
-            st.IsEmpty();
-            st.Push("IT Academy");
-            st.Show();
-            st.Remove(); st.Remove();
-            st.Show();
-            st.Remove();
-            st.Remove();
-            st.Remove();
-            st.Remove();
-            st.Remove();
+            st.Pop();
+            Console.WriteLine("Удаленное значение: " + st.lastRemovedMember);
             st.Show();
         }
 
