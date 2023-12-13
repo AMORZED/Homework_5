@@ -8,12 +8,12 @@ namespace Homework_7
         {
             Queue q = new Queue();
             q.Show();
-            q.Pop();
+            Console.WriteLine($"Удален элемент со значением \"{q.Pop()}\"");
             q.Show();
             q.Push("IT Academy");
             q.Push(":)");
             q.Show();
-            q.Pop();
+            Console.WriteLine($"Удален элемент со значением \"{q.Pop()}\"");
             q.Show();
         }
     }

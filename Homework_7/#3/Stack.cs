@@ -10,8 +10,7 @@ namespace _Stack
 {
     public class Stack
     {       
-        private object[] stack = new object[5] {"String", 27015, 15.32D, 'A', default(bool)};
-        public object lastRemovedMember; //Переменная, содержащая последний удаленный элемент
+        private object[] stack = new object[5] {"String", 27015, 15.32D, 'A', "IT Academy"};      
         public void Show() //Отображение текущего содержимого стека
         {
             Console.WriteLine("Текущее содержимое стека:");
@@ -35,16 +34,20 @@ namespace _Stack
             stack[stack.Length - 1] = newMember;
         }
 
-        public void Pop() //Возврат верхнего элемента из стека
+        public object Pop() //Возврат верхнего элемента из стека
         {
+            object lastRemovedMember; //Переменная для записи удаленного элемента
+            
             if (stack == null | stack.Length == 0)
             {
                 Console.WriteLine("Стек пуст!");
+                return lastRemovedMember = null;
             }
             else
             {
                 lastRemovedMember = stack[stack.Length - 1];
                 Array.Resize(ref stack, stack.Length - 1);
+                return lastRemovedMember;
             }
         }
     }

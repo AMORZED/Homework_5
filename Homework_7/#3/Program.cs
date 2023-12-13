@@ -9,8 +9,7 @@ namespace Homework_7
             Stack st = new Stack(); //Объектная переменная для класса Stack
 
             st.Show();
-            st.Pop();
-            Console.WriteLine("Удаленное значение: " + st.lastRemovedMember);
+            Console.WriteLine($"Удален элемент со значением \"{st.Pop()}\"");
             st.Show();
         }
 

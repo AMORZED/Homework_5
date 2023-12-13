@@ -10,7 +10,6 @@ namespace _Queue
     public class Queue
     {
         private object[] queue = new object[5] { "String", 27015, 15.32D, 'A', default(bool) };
-        public object lastRemovedMember; //Переменная, содержащая последний удаленный элемент
         public void Show() //Отображение текущего содержимого очереди
         {
             Console.WriteLine("Текущее содержимое очереди:");
@@ -34,11 +33,14 @@ namespace _Queue
             queue[queue.Length - 1] = newMember;
         }
 
-        public void Pop() //Возврат первого элемента из очереди и удаление его из очереди
+        public object Pop() //Возврат первого элемента из очереди и удаление его из очереди
         {
+            object lastRemovedMember; //Переменная для записи удаленного элемента
+            
             if (queue.Length == 0 | queue == null)
             {
                 Console.WriteLine("Очередь пуста!");
+                return lastRemovedMember = null;
             }
             else
             {
@@ -48,6 +50,7 @@ namespace _Queue
                     queue[i] = queue[j];
                 }
                 Array.Resize(ref queue, queue.Length - 1); //Удаление последнего элемнта очереди
+                return lastRemovedMember;
             }
         }
         public void Size() //Отображение размера очереди
