@@ -4,18 +4,20 @@ using System.Data;
 
 namespace Homework_8
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            Bag b = new Bag();
-            Item it = new Item();
-            b.Show();
-            b.AddItemInBag();
-            b.OpenBag();
-            b.AddItemInBag();
-            b.Show();
+            Bag Bag = new Bag();
+            Item Item_1 = new Item("Книга");
+            Item Item_2 = new Item("Ноутбук");
 
+            Bag.OpenBag();
+            Bag.AddItemInBag(Item_1);
+            Bag.AddItemInBag(Item_2);
+            Bag.Show();
+            Bag.GetItem(1);
+            Bag.Show();
         }
     }
 }

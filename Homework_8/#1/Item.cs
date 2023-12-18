@@ -8,13 +8,18 @@ namespace _Item
 {
     public class Item
     {
-        private object Name = "Unknown";
+        private string Name = "Unknown";
 
-        public void SetName(string newValue) 
-        { 
-            Name = newValue;
+        public Item(string name) 
+        {
+            SetName(name);
         }
-        public object GetName() 
+
+        public void SetName(string newName) 
+        { 
+            Name = newName;
+        }
+        public string GetName() 
         {
             return Name;
         }

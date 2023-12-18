@@ -10,13 +10,23 @@ namespace _Car
 {
     internal class Car : Transport
     {
-        public override Engine Engine
-        {
-            get {  }
-            set {  }
+        public override Engine Engine { get; set; }
+
+        private bool isMoving;
+
+        public Car() 
+        { 
+            this.Engine = new Engine();
         }
+        
         public override void Move()
-        {                    
+        {
+            if (isMoving == false)
+            {
+                this.isMoving = true;
+                Console.WriteLine("Машина начала ехать!");
+                Engine.StartEngine();
+            }
         }
     }
 }

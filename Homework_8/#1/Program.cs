@@ -6,13 +6,7 @@ namespace Homework_8
     {
         static void Main(string[] args)
         {
-            Item itm = new Item();
-            
-            Console.WriteLine(itm.GetName());
-            
-            itm.SetName("IT Academy");
-            
-            Console.WriteLine(itm.GetName());
+            Item Item_1 = new Item("Книга");
         }
     }
 }

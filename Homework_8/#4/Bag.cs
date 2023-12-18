@@ -11,28 +11,26 @@ namespace _Bag
 {
     public class Bag
     {
-        Item item1 = new Item();
-
         private Item[] items = new Item[8];
         
-        private bool BagIsOpen;
+        private bool IsOpen;
 
         public void OpenBag() //Открытие и закрытие сумки
         {
-         if (BagIsOpen == false) 
+         if (IsOpen == false) 
             { 
-                BagIsOpen = true;
+                IsOpen = true;
                 Console.WriteLine("Вы открыли сумку!");
             }
-         else if (BagIsOpen == true) 
+         else if (IsOpen == true) 
             { 
-                BagIsOpen = false;
+                IsOpen = false;
                 Console.WriteLine("Вы закрыли сумку!");
             }
         }
-        public void AddItemInBag() //Добавление объекта в сумку
+        public void AddItemInBag(Item it) //Добавление объекта в сумку
         {
-            if (BagIsOpen == false) 
+            if (IsOpen == false) 
             {
                 Console.WriteLine("\nСумка закрыта, невозможно добавить объект!"); 
             }
@@ -46,17 +44,17 @@ namespace _Bag
                 {
                     if (items[i] == null)
                     {
-                        items[i] = item1;
-                        Console.WriteLine($"Вещь \"{item1.GetName()}\" положена в сумку!");
+                        items[i] = it;
+                        Console.WriteLine($"Вещь \"{it.GetName()}\" положена в сумку!");
                         break;
                     }
                 }
             }
         }
-        public object GetItemFromBag(int index) //Получение объекта из сумки по индексу
+        public Item GetItem(int index) //Получение объекта из сумки по индексу
         {
-            object returnedItem = null;
-            if (BagIsOpen == false)
+            Item returnedItem = null;
+            if (IsOpen == false)
             {
                 Console.WriteLine("\nСумка закрыта!");
                 return returnedItem;
@@ -64,8 +62,8 @@ namespace _Bag
             else
             {
                 returnedItem = items[index];
+                Console.WriteLine($"\nВещь \"{returnedItem.GetName()}\" вынута из сумки!");
                 items[index] = null;
-                Console.WriteLine($"Вещь \"{items[index]}\" вынута из сумки!");
                 return returnedItem;
             }
         }
@@ -81,7 +79,8 @@ namespace _Bag
         }
         public void Show() //Отображение содержимого сумки
         {
-            for(int i = 0; i < items.Length; i++)
+            Console.Write("Содержимое сумки:   ");
+            for (int i = 0; i < items.Length; i++)
             {
                 Console.Write(items[i] + " | ");
             }

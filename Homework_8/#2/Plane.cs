@@ -11,13 +11,22 @@ namespace _Plane
 {
     public class Plane : Transport
     {
-        public override Engine Engine 
-        { 
-            get { }
-            set { }
+        public override Engine Engine { get; set; }
+
+        private bool isMoving;
+
+        public Plane()
+        {
+            this.Engine = new Engine();
         }
         public override void Move()
         {
+            if (isMoving == false)
+            {
+                this.isMoving = true;
+                Console.WriteLine("Самолет взлетел!");
+                Engine.StartEngine();
+            }
         }
     }
 }
