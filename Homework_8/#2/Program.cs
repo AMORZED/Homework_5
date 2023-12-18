@@ -9,10 +9,12 @@ namespace _2
     {
         static void Main(string[] args)
         {
-            Car Porshe = new Car();
+            Engine Engine = new Engine();
+            
+            Car Porshe = new Car(Engine);
             Porshe.Move();
             
-            Plane Plane = new Plane();
+            Plane Plane = new Plane(Engine);
             Plane.Move();
         }
     }

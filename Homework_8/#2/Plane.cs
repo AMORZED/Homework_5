@@ -13,20 +13,14 @@ namespace _Plane
     {
         public override Engine Engine { get; set; }
 
-        private bool isMoving;
-
-        public Plane()
+        public Plane(Engine Engine)
         {
-            this.Engine = new Engine();
+            this.Engine = Engine;
         }
         public override void Move()
         {
-            if (isMoving == false)
-            {
-                this.isMoving = true;
                 Console.WriteLine("Самолет взлетел!");
-                Engine.StartEngine();
-            }
+                Engine.StartEngine();          
         }
     }
 }

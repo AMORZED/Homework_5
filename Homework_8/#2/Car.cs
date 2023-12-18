@@ -12,21 +12,15 @@ namespace _Car
     {
         public override Engine Engine { get; set; }
 
-        private bool isMoving;
-
-        public Car() 
+        public Car(Engine Engine) 
         { 
-            this.Engine = new Engine();
+            this.Engine = Engine;
         }
         
         public override void Move()
         {
-            if (isMoving == false)
-            {
-                this.isMoving = true;
-                Console.WriteLine("Машина начала ехать!");
-                Engine.StartEngine();
-            }
+            Console.WriteLine("Машина начала ехать!");
+            this.Engine.StartEngine();            
         }
     }
 }
