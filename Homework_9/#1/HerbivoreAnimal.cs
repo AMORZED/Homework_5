@@ -9,12 +9,11 @@ namespace _HerbivoreAnimal
 {
     public class HerbivoreAnimal : Animal
     {
-        private Animal animal;
-
-        public HerbivoreAnimal(Animal animal)
+        public HerbivoreAnimal()
         {
-            this.animal = animal;
+
         }
+
         public override void Live()
         {
             Console.WriteLine("В лесу появились травоядные!");

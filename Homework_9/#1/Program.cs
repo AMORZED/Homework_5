@@ -12,10 +12,7 @@ namespace _Program
     {
         static void Main(string[] args)
         {
-            Animal Animal = new Animal();
-            Console.WriteLine();
-            
-            Predator Predator = new Predator(Animal);
+            Predator Predator = new Predator();
             Console.WriteLine();
 
             Wolf Wolf = new Wolf(Predator);
@@ -23,7 +20,7 @@ namespace _Program
             
             Console.WriteLine("----------");
 
-            HerbivoreAnimal HerbivoreAnimal = new HerbivoreAnimal(Animal);
+            HerbivoreAnimal HerbivoreAnimal = new HerbivoreAnimal();
             Console.WriteLine();
 
             Rabbit Rabbit = new Rabbit(HerbivoreAnimal);

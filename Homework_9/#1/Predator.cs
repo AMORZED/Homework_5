@@ -9,12 +9,11 @@ namespace _Predator
 {
     public class Predator : Animal
     {
-        private Animal animal;
-
-        public Predator(Animal animal) 
+        public Predator()
         {
-            this.animal = animal;
+
         }
+
         public override void Live()
         {
             Console.WriteLine("В лесу появились хищники!");

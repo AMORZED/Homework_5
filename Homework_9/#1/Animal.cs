@@ -15,7 +15,7 @@ namespace _Animal
         }
         public virtual void Live()
         {
-            Console.WriteLine("Животные созданы!");
+
         }
     }
 }

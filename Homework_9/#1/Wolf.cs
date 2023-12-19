@@ -8,11 +8,10 @@ using _Predator;
 namespace _Wolf
 {
     internal class Wolf : Predator
-    {
-        private Predator predator;        
-        public Wolf(Predator predator) : base(predator)
+    {      
+        public Wolf(Predator predator)
         {
-            this.predator = predator;
+
         }
 
         public override void Live()

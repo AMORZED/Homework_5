@@ -9,10 +9,9 @@ namespace _Bear
 {
     internal class Bear : Predator
     {
-        private Predator predator;
-        public Bear(Predator predator) : base(predator)
+        public Bear(Predator predator)
         {
-            this.predator = predator;
+
         }
 
         public override void Live()

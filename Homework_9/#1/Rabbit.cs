@@ -10,10 +10,9 @@ namespace _1
 {
     internal class Rabbit : HerbivoreAnimal
     {
-        private HerbivoreAnimal herbivoreAnimal;
-        public Rabbit(HerbivoreAnimal herbivoreAnimal) : base(herbivoreAnimal)
+        public Rabbit(HerbivoreAnimal herbivoreAnimal)
         {
-            this.herbivoreAnimal = herbivoreAnimal;
+
         }
 
         public override void Live()
