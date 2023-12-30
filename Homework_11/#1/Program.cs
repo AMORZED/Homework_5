@@ -16,8 +16,8 @@
             Panda d = a - b; //Мочиловка между двумя пандами
             d.ShowStats();
 
-            Panda.CompareHP(a, b); 
-            Panda.CompareColor(a, b); 
+            Panda.CompareHP(a, b); //Сравнение панд по ХП
+            Panda.CompareColor(a, b); //Сравнение панд по цвету
         }
     }
 }

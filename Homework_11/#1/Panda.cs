@@ -87,7 +87,7 @@ namespace _1
             Console.WriteLine("----------");
         }
 
-        public static Panda operator+ ( Panda first, Panda second )
+        public static Panda operator+ ( Panda first, Panda second ) //Переопределение оператора "+"
         {
             Random rnd = new Random();
             int random = rnd.Next(1, 3);            
@@ -120,7 +120,7 @@ namespace _1
 
 
         }
-        public static Panda operator- ( Panda first, Panda second )
+        public static Panda operator- ( Panda first, Panda second) //Переопределение оператора "-"
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"ПАНДА \"{first.name}\" НАПАДАЕТ НА ПАНДУ \"{second.name}\", НО ОНА ОСТАЛАСЬ ЖИВА!");

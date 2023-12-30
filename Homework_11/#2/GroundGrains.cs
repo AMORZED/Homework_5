@@ -18,17 +18,17 @@ namespace _2
             SetVolume();
         }
 
-        internal void SetStrength()
+        internal void SetStrength() //Случайная крепость
         {
             int random = rnd.Next(0, 3);
             this.str = (strength)random;
         }
-        public void SetVolume()
+        public void SetVolume() //Случайный объем
         {
             int random = rnd.Next(20, 41);
             this.volume = random;
         }
-        public void Show()
+        public void Show() //Вывод характеристик на экран
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("МОЛОТЫЕ ЗЕРНА");
@@ -38,7 +38,7 @@ namespace _2
             Console.WriteLine($"Обьем: {this.volume} мл.");
             Console.WriteLine();
         }
-        public static Coffee operator+ ( Water w, GroundGrains g )
+        public static Coffee operator+ ( Water w, GroundGrains g ) //Переопределение оператора "+"
         {
             Coffee coffee = new Coffee();
 
@@ -47,7 +47,7 @@ namespace _2
 
             coffee.SetTemperature((int)w.temp); //Конечная температура кофе (зависит напрямую от температуры воды)
 
-            int coffeeRating = 6; //Оценка кофе при горячей воде, крепких зернах и объеме меньше 200 мл. (снижается в зависимости от характеристик ингредиентов)
+            int coffeeRating = 6; //Оценка кофе при горячей воде, крепких зернах и объеме меньше 200 мл. (чем ниже температура воды, крепость зерен или больше объем, тем ниже крепость кофе)
 
             if (w.temp == Water.temperature.Warm) { coffeeRating -= 1; }
             else if (w.temp == Water.temperature.Cool) { coffeeRating -= 2; }

@@ -19,17 +19,17 @@ namespace _2
             SetVolume();
         }
 
-        public void SetTemperature ()
+        public void SetTemperature () //Случайная температура
         {
             int random = rnd.Next(0, 3);
             this.temp = (temperature)random;
         }
-        public void SetVolume () //
+        public void SetVolume () //Случайный объем
         {
             int random = rnd.Next(100, 301);
             this.volume = random;
         }
-        public void Show()
+        public void Show() //Вывод характеристик на экран
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("ВОДА");

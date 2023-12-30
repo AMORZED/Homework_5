@@ -14,21 +14,21 @@ namespace _2
         private int volume;
         private temperature temp;
 
-        internal void SetVolume(int a)
+        internal void SetVolume(int a) //Установка объема кофе
         { 
             this.volume = a;
         }
 
-        internal void SetStrength (strength a)
+        internal void SetStrength (strength a) //Установка крепости кофе
         {
             this.str = a;
         }
 
-        internal void SetTemperature(int a)
+        internal void SetTemperature(int a) //Установка температуры кофе
         {
             this.temp = (temperature)a;
         }
-        public void Show ()
+        public void Show () //Вывод характеристик на экран
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("КОФЕ");
