@@ -8,28 +8,29 @@ namespace _2
 {
     internal class Water
     {
-        Random rnd = new Random();
         internal enum temperature { Cool, Warm, Hot }
         internal temperature temp;
         internal int volume;
 
         public Water() 
         {
-            SetTemperature();
-            SetVolume();
+            SetRandomTemperature();
+            SetRandomVolume();
         }
 
-        public void SetTemperature () //Случайная температура
+        public void SetRandomTemperature ()
         {
+            Random rnd = new Random();
             int random = rnd.Next(0, 3);
             this.temp = (temperature)random;
         }
-        public void SetVolume () //Случайный объем
+        public void SetRandomVolume ()
         {
+            Random rnd = new Random();
             int random = rnd.Next(100, 301);
             this.volume = random;
         }
-        public void Show() //Вывод характеристик на экран
+        public void Show()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("ВОДА");
