@@ -79,10 +79,14 @@ namespace _Bag
         }
         public void Show() //Отображение содержимого сумки
         {
-            Console.Write("Содержимое сумки:   ");
+            Console.Write("Содержимое сумки:\n");
             for (int i = 0; i < items.Length; i++)
             {
-                Console.Write(items[i] + " | ");
+                if (items[i] != null)
+                {
+                    Console.Write($"{items[i].GetName()} | ");
+                }
+                else Console.Write(" | ");
             }
         }
     }
