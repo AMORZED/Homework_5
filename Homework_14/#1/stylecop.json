@@ -1,0 +1,19 @@
+﻿{
+  "$schema": "https://raw.githubusercontent.com/DotNetAnalyzers/StyleCopAnalyzers/master/StyleCop.Analyzers/StyleCop.Analyzers/Settings/stylecop.schema.json",
+  "settings": {
+    "orderingRules": {
+      "usingDirectivesPlacement": "OutsideNamespace",
+      "elementOrder": [ "accessibility", "constant", "readonly", "static", "kind" ]
+    },
+    "documentationRules": {
+      "companyName": "Alexei Morozov",
+      "copyrightText": "Copyright (C) Alexei Morozov. All rights reserved."
+    },
+    "indentation": {
+      "useTabs": true,
+      "tabSize": 4
+    },
+    "layoutRules": { "newlineAtEndOfFile": "require" },
+    "maintainabilityRules": { "topLevelTypes": [ "class", "interface", "struct" ] }
+  }
+}
