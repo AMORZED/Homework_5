@@ -21,8 +21,8 @@ namespace IPProduct
 		double Price { get; }
 
 		/// <summary>
-		/// Gets a name of product.
+		/// Gets a type of product.
 		/// </summary>
-		string Name { get; }
+		string TypeOfProduct { get; }
 	}
 }

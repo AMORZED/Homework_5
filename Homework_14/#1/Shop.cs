@@ -129,7 +129,7 @@ namespace SShop
 						this.assortment.Remove(product);
 
 						Console.ForegroundColor = ConsoleColor.Green;
-						Console.WriteLine($"Продан товар: Молоко - \'{ml.Name}\' за {ml.Price} руб.");
+						Console.WriteLine($"Продан товар: {ml.TypeOfProduct} - \'{ml.Name}\' за {ml.Price} руб.");
 						Console.ForegroundColor = ConsoleColor.Cyan;
 						Console.WriteLine($"После продажи в кассе имеется {this.cashRegister} руб.");
 						Console.ResetColor();
@@ -137,7 +137,7 @@ namespace SShop
 					}
 					else
 					{
-						throw new Exception($"Товара \"Молоко - '{ml.Name}'\" нет в наличии!");
+						throw new Exception($"Товара \"{ml.TypeOfProduct} - '{ml.Name}'\" нет в наличии!");
 					}
 				}
 				else
@@ -156,7 +156,7 @@ namespace SShop
 						this.assortment.Remove(product);
 
 						Console.ForegroundColor = ConsoleColor.Green;
-						Console.WriteLine($"Продан товар: Хлеб - \'{br.Name}\' за {br.Price} руб.");
+						Console.WriteLine($"Продан товар: {br.TypeOfProduct} - \'{br.Name}\' за {br.Price} руб.");
 						Console.ForegroundColor = ConsoleColor.Cyan;
 						Console.WriteLine($"После продажи в кассе имеется {this.cashRegister} руб.");
 						Console.ResetColor();
@@ -164,7 +164,7 @@ namespace SShop
 					}
 					else
 					{
-						throw new Exception($"Товара \"Хлеб - \'{br.Name}\'\" нет в наличии!");
+						throw new Exception($"Товара \"{br.TypeOfProduct} - \'{br.Name}\'\" нет в наличии!");
 					}
 				}
 				else

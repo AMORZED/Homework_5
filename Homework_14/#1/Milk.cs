@@ -45,6 +45,18 @@ namespace MMilk
 			}
 		}
 
+		/// <summary>
+		/// Gets тип продукта.
+		/// </summary>
+		public string TypeOfProduct
+		{
+			get
+			{
+				return this.typeOfProduct;
+			}
+		}
+
+		private string typeOfProduct = "Молоко";
 		private double price;
 		private string name;
 	}

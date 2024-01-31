@@ -41,6 +41,18 @@ namespace BBread
 			}
 		}
 
+		/// <summary>
+		/// Gets тип продукта.
+		/// </summary>
+		public string TypeOfProduct
+		{
+			get
+			{
+				return this.typeOfProduct;
+			}
+		}
+
+		private string typeOfProduct = "Хлеб";
 		private double price;
 		private string name;
 	}
