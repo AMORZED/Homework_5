@@ -4,18 +4,17 @@
 
 using System;
 using System.Threading;
+using IMMyCycles;
 
 namespace MMyCycles
 {
 	/// <summary>
 	/// Класс с кастомными циклами.
 	/// </summary>
-	public class MyCycles
+	public class MyCycles : IMyCycles
 	{
-		/// <summary>
-		/// Цикл с выводом цифр.
-		/// </summary>
-		public static void WriteNumbers()
+		/// <inheritdoc/>
+		public void WriteNumbers()
 		{
 			for (int i = 0; i <= 33; i++)
 			{
@@ -28,10 +27,8 @@ namespace MMyCycles
 			Console.WriteLine();
 		}
 
-		/// <summary>
-		/// Цикл с выводом букв.
-		/// </summary>
-		public static void WriteLetters()
+		/// <inheritdoc/>
+		public void WriteLetters()
 		{
 			char chr = 'А';
 			for (int i = 0; i <= 33; i++)

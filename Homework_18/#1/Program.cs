@@ -18,12 +18,14 @@ namespace PProgram
 		/// <param name="args">Параметры.</param>
 		internal static void Main(string[] args)
 		{
-			Thread myThread = new Thread(new ThreadStart(MyCycles.WriteNumbers));
+			MyCycles myCycles = new MyCycles();
+
+			Thread myThread = new Thread(new ThreadStart(myCycles.WriteNumbers));
 			myThread.Name = "Вторичный поток: ";
 			myThread.Start();
 
 			Thread.CurrentThread.Name = "Главный поток: ";
-			MyCycles.WriteLetters();
+			myCycles.WriteLetters();
 		}
 	}
 }
