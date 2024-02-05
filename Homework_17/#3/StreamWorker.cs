@@ -34,10 +34,15 @@ namespace SStreamWorker
 		/// <param name="path">Путь к текстовому файлу.</param>
 		public static void ReadFileWithText(string path)
 		{
+			FileInfo fileInfo = new FileInfo(path);
 			using (StreamReader sr = new StreamReader(path))
 			{
 				string text = sr.ReadToEnd();
 				sr.Close();
+
+				Console.ForegroundColor = ConsoleColor.Cyan;
+				Console.WriteLine($"ТЕКСТ ИЗ ФАЙЛА '{fileInfo.Name}':");
+				Console.ResetColor();
 				Console.WriteLine(text);
 			}
 		}
