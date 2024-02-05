@@ -17,11 +17,12 @@ namespace PProgram
 		/// <param name="args">Параметры.</param>
 		internal static void Main(string[] args)
 		{
+			DriveWorker driveWorker = new DriveWorker();
 			string path = @"C:\Users\AMORZED\Desktop";
 
-			Console.WriteLine($"Количество файлов в указанном каталоге: {DriveWorker.CountOfFiles(path)}");
+			Console.WriteLine($"Количество файлов в указанном каталоге: {driveWorker.CountOfFiles(path)}");
 
-			foreach (var el in DriveWorker.InfoOfFiles(path))
+			foreach (var el in driveWorker.InfoOfFiles(path))
 			{
 				Console.WriteLine($"Название файла: {el.Name}");
 				Console.WriteLine($"Размер файла: {Math.Round(el.Length / 1024D / 1024D, 2)} МБ.");
@@ -29,9 +30,9 @@ namespace PProgram
 				Console.WriteLine("-----");
 			}
 
-			Console.WriteLine($"Количество файлов с указанным расширением в указанном каталоге: {DriveWorker.CountOfSpecificFiles(path, "pdf")}");
+			Console.WriteLine($"Количество файлов с указанным расширением в указанном каталоге: {driveWorker.CountOfSpecificFiles(path, "pdf")}");
 
-			foreach (var el in DriveWorker.InfoOfSpecificFiles(path, "pdf"))
+			foreach (var el in driveWorker.InfoOfSpecificFiles(path, "pdf"))
 			{
 				Console.WriteLine($"Название файла: {el.Name}");
 				Console.WriteLine($"Размер файла: {Math.Round(el.Length / 1024D / 1024D, 2)} МБ.");

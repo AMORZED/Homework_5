@@ -17,11 +17,13 @@ namespace PProgram
 		/// <param name="args">Параметры.</param>
 		public static void Main(string[] args)
 		{
+			StreamWorker streamWorker = new StreamWorker();
+
 			string path = @"C:\Users\AMORZED\Desktop\TextFile.txt";
 			string text = "Привет с первой строки\n\nПривет с 3й строки";
 
-			StreamWorker.CreateFileWithText(path, text);
-			StreamWorker.ReadFileWithText(path);
+			streamWorker.CreateFileWithText(path, text);
+			streamWorker.ReadFileWithText(path);
 		}
 	}
 }

@@ -17,13 +17,14 @@ namespace PProgram
 		/// <param name="args">Параметры.</param>
 		 internal static void Main(string[] args)
 		 {
-			string path = @"C:\Users\AMORZED\Desktop\Новый текстовый документ (3).txt";
+			StreamWorker steamWorker = new StreamWorker();
 
+			string path = @"C:\Users\AMORZED\Desktop\Новый текстовый документ (3).txt";
 			string text = "HI, my name is tist file";
 
-			StreamWorker.CreateFileWithText(path, text);
-			StreamWorker.FindAndReplaceASpecificWord(path, "tist", "test");
-			StreamWorker.ReadFileWithText(path);
+			steamWorker.CreateFileWithText(path, text);
+			steamWorker.FindAndReplaceASpecificWord(path, "tist", "test");
+			steamWorker.ReadFileWithText(path);
 		 }
 	}
 }

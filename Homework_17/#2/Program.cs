@@ -17,7 +17,13 @@ namespace PProgram
 		/// <param name="args">Параметры.</param>
 		internal static void Main(string[] args)
 		{
-			DriveWorker.CreateAndDeleteSomeFolders(@"C:\Users\AMORZED\Desktop\MyFolderWithFolders", "MyTestFolder", 19);
+			DriveWorker driveWorker = new DriveWorker();
+
+			string newDirectoryPath = "C:\\Users\\AMORZED\\Desktop";
+			string folderPath = @"C:\Users\AMORZED\Desktop\Test";
+
+			driveWorker.CreateDirectoryWithFolders(newDirectoryPath, "Test", "MyTestFolder", 19);
+			driveWorker.RemoveFolder(folderPath);
 		}
 	}
 }

@@ -2,22 +2,17 @@
 // Copyright (C) Alexei Morozov. All rights reserved.
 // </copyright>
 
-using System.Runtime.CompilerServices;
+using IDDriveWorker;
 
 namespace DDriveworker
 {
 	/// <summary>
 	/// Кастомный класс для работы с файлами.
 	/// </summary>
-	public class DriveWorker
+	public class DriveWorker : IDriveWorker
 	{
-		/// <summary>
-		/// Возвращает кол-во файлов в каталоге.
-		/// </summary>
-		/// <param name="path">Путь к папке.</param>
-		/// <returns>Число найденных файлов в каталоге.</returns>
-		/// <exception cref="Exception">Ошибка в случае несуществующего каталога.</exception>
-		public static int CountOfFiles(string path)
+		/// <inheritdoc/>
+		public int CountOfFiles(string path)
 		{
 			if (Directory.Exists(path))
 			{
@@ -37,12 +32,8 @@ namespace DDriveworker
 			}
 		}
 
-		/// <summary>
-		/// Возвращает данные о файлах в каталоге.
-		/// </summary>
-		/// <param name="path">Путь к папке.</param>
-		/// <returns>Массив данных о файлах.</returns>
-		public static FileInfo[] InfoOfFiles(string path)
+		/// <inheritdoc/>
+		public FileInfo[] InfoOfFiles(string path)
 		{
 			string[] files = Directory.GetFiles(path);
 			List<FileInfo> listOfFileInfo = new List<FileInfo>();
@@ -56,13 +47,8 @@ namespace DDriveworker
 			return listOfFileInfo.ToArray();
 		}
 
-		/// <summary>
-		/// Возвращает кол-во файлов в каталоге с указанным расширением.
-		/// </summary>
-		/// <param name="path">Путь к папке.</param>
-		/// <param name="extension">Указанное расширение.</param>
-		/// <returns>Число найденных файлов в каталоге.</returns>
-		public static int CountOfSpecificFiles(string path, string extension)
+		/// <inheritdoc/>
+		public int CountOfSpecificFiles(string path, string extension)
 		{
 			string[] files = Directory.GetFiles(path);
 			int countOfFiles = 0;
@@ -78,13 +64,8 @@ namespace DDriveworker
 			return countOfFiles;
 		}
 
-		/// <summary>
-		/// Возвращает данные о файлах в каталоге с нужным расширением.
-		/// </summary>
-		/// <param name="path">Путь к папке.</param>
-		/// <param name="extension">Нужное расширение файла.</param>
-		/// <returns>Массив данных о найденных файлах.</returns>
-		public static FileInfo[] InfoOfSpecificFiles(string path, string extension)
+		/// <inheritdoc/>
+		public FileInfo[] InfoOfSpecificFiles(string path, string extension)
 		{
 			string[] files = Directory.GetFiles(path);
 			List<FileInfo> listOfFileInfo = new List<FileInfo>();
@@ -101,77 +82,49 @@ namespace DDriveworker
 			return listOfFileInfo.ToArray();
 		}
 
-		/// <summary>
-		/// Создает в указанном каталоге несколько папок с нужным названием.
-		/// </summary>
-		/// <param name="path">Путь к каталогу.</param>
-		/// <param name="nameOfFolders">Название создаваемых папок.</param>
-		/// <param name="count">Кол-во создаваемых папок.</param>
-		public static void CreateAndDeleteSomeFolders(string path, string nameOfFolders, int count)
+		/// <inheritdoc/>
+		public void CreateDirectoryWithFolders(string newDirectoryPath, string nameOfNewDirectory, string nameOfnewFolders, int count)
 		{
-			for (int i = 0; i <= count; i++)
+			string directoryPath = newDirectoryPath + $"\\{nameOfNewDirectory}";
+			DirectoryInfo drInfo = new DirectoryInfo(directoryPath);
+
+			if (!drInfo.Exists)
 			{
-				string p = path + $"\\{nameOfFolders}_{i}";
-				DirectoryInfo drInfo = new DirectoryInfo(p);
-
-				if (!drInfo.Exists)
-				{
-					drInfo.Create();
-
-					Console.Write($"'{p}'");
-					Console.ForegroundColor = ConsoleColor.Green;
-					Console.WriteLine(" - ДИРЕКТОРИЯ СОЗДАНА!");
-					Console.ResetColor();
-				}
-				else
-				{
-					Console.Write($"'{p}'");
-					Console.ForegroundColor = ConsoleColor.Red;
-					Console.WriteLine(" - ДИРЕКТОРИЯ УЖЕ СУЩЕСТВУЕТ!");
-					Console.ResetColor();
-				}
-			}
-
-			DirectoryInfo drInfo1 = new DirectoryInfo(path);
-			Console.WriteLine();
-			Console.WriteLine($"Удалить созданные папки в каталоге '{drInfo1.Name}'? (Y/N):");
-			string answer = Console.ReadLine() ?? "N";
-
-			if (answer.ToLower() == "y")
-			{
-				for (int i = 0; i <= count; i++)
-				{
-					string p = path + $"\\{nameOfFolders}_{i}";
-					DirectoryInfo drInfo = new DirectoryInfo(p);
-
-					if (drInfo.Exists)
-					{
-						drInfo.Delete(true);
-
-						Console.Write($"'{p}'");
-						Console.ForegroundColor = ConsoleColor.Green;
-						Console.WriteLine(" - ДИРЕКТОРИЯ УДАЛЕНА!");
-						Console.ResetColor();
-					}
-					else
-					{
-						Console.Write($"'{p}'");
-						Console.ForegroundColor = ConsoleColor.Red;
-						Console.WriteLine(" - ДИРЕКТОРИЯ НЕ СУЩЕСТВУЕТ!");
-						Console.ResetColor();
-					}
-				}
-
-				Console.WriteLine();
-				Console.ForegroundColor = ConsoleColor.Cyan;
-				Console.WriteLine("ДИРЕКТОРИИ БЫЛИ УДАЛЕНЫ!");
-				Console.ResetColor();
+				drInfo.Create();
 			}
 			else
 			{
-				Console.ForegroundColor = ConsoleColor.Cyan;
-				Console.WriteLine("ДИРЕКТОРИИ НЕ БЫЛИ УДАЛЕНЫ!");
-				Console.ResetColor();
+				throw new Exception("Директория, которую вы хотите создать, уже существует!");
+			}
+
+			for (int i = 1; i <= count; i++)
+			{
+				string newFoldersPath = directoryPath + $"\\{nameOfnewFolders}_{i}";
+				DirectoryInfo drInfo_1 = new DirectoryInfo(newFoldersPath);
+
+				if (drInfo_1.Exists)
+				{
+					throw new Exception($"Директория {drInfo_1.FullName} уже существует!");
+				}
+				else
+				{
+					drInfo_1.Create();
+				}
+			}
+		}
+
+		/// <inheritdoc/>
+		public void RemoveFolder(string path)
+		{
+			DirectoryInfo dr = new DirectoryInfo(path);
+
+			if (dr.Exists)
+			{
+				Directory.Delete(path, true);
+			}
+			else
+			{
+				throw new Exception("Указанной директории не существует!");
 			}
 		}
 	}
