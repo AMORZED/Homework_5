@@ -1,25 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace _Engine
+﻿namespace _Engine
 {
     public class Engine 
     {
-        private bool isStarted;
-        public void StartEngine()
+        private bool isStarted = false;
+        public void SwitchEngine()
         {
             if (isStarted == false)
             {
                 isStarted = true;
-                Console.WriteLine("Двигатель запущен!");
+
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Двигатель транспорта запущен!");
+                Console.ResetColor();
             }
             else
             {
                 isStarted = false;
-                Console.WriteLine("Двигатель остановлен!");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Двигатель транспорта остановлен!");
+                Console.ResetColor();
             }
         }
 

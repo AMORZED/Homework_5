@@ -1,6 +1,5 @@
 ﻿using _Car;
 using _Engine;
-using _Transport;
 using _Plane;
 
 namespace _2
@@ -9,13 +8,18 @@ namespace _2
     {
         static void Main(string[] args)
         {
-            Engine Engine = new Engine();
-            
-            Car Porshe = new Car(Engine);
-            Porshe.Move();
-            
-            Plane Plane = new Plane(Engine);
-            Plane.Move();
+            Engine EngineOfCar = new Engine();
+            Engine EngineOfPlane = new Engine();
+
+            Car Porshe = new Car(EngineOfCar);
+            Porshe.Move(true);
+
+            Console.WriteLine();
+            Plane Plane = new Plane(EngineOfPlane);
+            Plane.Move(true);
+
+            Console.WriteLine();
+            Plane.Move(false);
         }
     }
 }

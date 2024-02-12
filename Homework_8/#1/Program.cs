@@ -6,7 +6,7 @@ namespace Homework_8
     {
         static void Main(string[] args)
         {
-            Item Item_1 = new Item("Книга");
+            Item item = new Item();
         }
     }
 }

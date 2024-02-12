@@ -1,4 +1,5 @@
 ﻿using _IntExtension;
+using _MyClass;
 
 namespace Homework_8
 {
@@ -6,19 +7,10 @@ namespace Homework_8
     {
         static void Main(string[] args)
         {
-            int[] array = new int[10];
+            int[] array = MyClass.CreateArray(10);
+            MyClass.ShowArray(array);
 
-            Random rnd = new Random();
-
-            Console.WriteLine("Имеющийся массив: ");
-            for (int i = 0; i < array.Length; i++)
-            {
-                array[i] = rnd.Next(1, 101);
-                Console.Write(array[i] + " | ");
-            }
-            Console.WriteLine();
-
-            Console.WriteLine($"Наибольшее значение в массиве: \"{ array.BiggestValue()}\"");
+            Console.WriteLine($"Наибольшее значение в массиве: '{array.BiggestValue()}'");
         }
     }
 }

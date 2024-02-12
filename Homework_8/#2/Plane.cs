@@ -1,11 +1,5 @@
 ﻿using _Engine;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using _Transport;
-using System.Runtime.InteropServices;
 
 namespace _Plane
 {
@@ -17,10 +11,30 @@ namespace _Plane
         {
             this.Engine = Engine;
         }
-        public override void Move()
+        public override void Move(bool isMove)
         {
+            if (isMove == true & isMooving == false)
+            {
                 Console.WriteLine("Самолет взлетел!");
-                Engine.StartEngine();          
+                Engine.SwitchEngine();
+                isMooving = true;
+            }
+            else if (isMove == true & isMooving == true)
+            {
+                Console.WriteLine("Самолет уже находится в движении!");
+            }
+            else if (isMove == false & isMooving == false)
+            {
+                Console.WriteLine("Самолет уже стоит на месте!");
+            }
+            else
+            {
+                Console.WriteLine("Самолет приземлился!");
+                Engine.SwitchEngine();
+                isMooving = false;
+            }
         }
+
+        private bool isMooving = false;
     }
 }

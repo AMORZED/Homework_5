@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using _Engine;
+﻿using _Engine;
 using _Transport;
 
 namespace _Car
@@ -17,10 +12,30 @@ namespace _Car
             this.Engine = Engine;
         }
         
-        public override void Move()
+        public override void Move(bool isMove)
         {
-            Console.WriteLine("Машина начала ехать!");
-            this.Engine.StartEngine();            
+            if (isMove == true & isMooving == false)
+            {
+                Console.WriteLine("Машина поехала!");
+                Engine.SwitchEngine();
+                isMooving = true;
+            }
+            else if (isMove == true & isMooving == true)
+            {
+                Console.WriteLine("Машина уже находится в движении!");
+            }
+            else if (isMove == false & isMooving == false)
+            {
+                Console.WriteLine("Машина уже стоит на месте!");
+            }
+            else
+            {
+                Console.WriteLine("Машина остановилась!");
+                Engine.SwitchEngine();
+                isMooving = false;
+            }
         }
+
+        private bool isMooving = false;
     }
 }

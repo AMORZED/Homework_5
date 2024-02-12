@@ -1,42 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using _Item;
+﻿using _Item;
 
 namespace _Bag
 {
     public class Bag
     {
-        private Item[] items = new Item[8];
-        
-        private bool IsOpen;
-
-        public void OpenBag() //Открытие и закрытие сумки
+        public void OpenBag() // Открытие и закрытие сумки
         {
-         if (IsOpen == false) 
-            { 
-                IsOpen = true;
+            if (isOpen == false) 
+            {
+                isOpen = true;
+
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Вы открыли сумку!");
+                Console.ResetColor();
             }
-         else if (IsOpen == true) 
-            { 
-                IsOpen = false;
+            else
+            {
+                isOpen = false;
+
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Вы закрыли сумку!");
+                Console.ResetColor();
             }
         }
-        public void AddItemInBag(Item it) //Добавление объекта в сумку
+        public void AddItemInBag(Item it) // Добавление объекта в сумку
         {
-            if (IsOpen == false) 
+            if (isOpen == false) 
             {
-                Console.WriteLine("\nСумка закрыта, невозможно добавить объект!"); 
+                Console.WriteLine("Сумка закрыта, невозможно добавить объект!"); 
             }
-            else if (BagIsFilled() == true)
+            else if (isFilled == true)
             {
-                Console.WriteLine("\nВ сумке нет места, невозможно добавить объект!");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("В сумке нет места, невозможно добавить объект!");
+                Console.ResetColor();
             }
             else
             {
@@ -45,49 +42,75 @@ namespace _Bag
                     if (items[i] == null)
                     {
                         items[i] = it;
-                        Console.WriteLine($"Вещь \"{it.GetName()}\" положена в сумку!");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine($"Вещь '{it.GetName()}' была положена в сумку!");
+                        Console.ResetColor();
                         break;
                     }
                 }
             }
         }
-        public Item GetItem(int index) //Получение объекта из сумки по индексу
+        public Item GetItem(int index) // Получение объекта из сумки по индексу
         {
-            Item returnedItem = null;
-            if (IsOpen == false)
+            Item returnedItem;
+
+            if (isOpen == false)
             {
-                Console.WriteLine("\nСумка закрыта!");
-                return returnedItem;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Сумка закрыта, нельзя достать вещь!");
+                Console.ResetColor();
+                return null;
             }
             else
             {
                 returnedItem = items[index];
-                Console.WriteLine($"\nВещь \"{returnedItem.GetName()}\" вынута из сумки!");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Вещь '{returnedItem.GetName()}' была вынута из сумки!");
+                Console.ResetColor();
                 items[index] = null;
                 return returnedItem;
             }
         }
-            public bool BagIsFilled()  //Проверка сумки на наличие свободного места
+        public bool BagIsFilled()  // Проверка сумки на наличие свободного места
         {
-            bool isFilled = false;
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] == null) isFilled = false;
-                else isFilled = true;
+                if (items[i] == null)
+                {
+                    isFilled = false;
+                }
+                else
+                {
+                    isFilled = true;
+                }
             }
+
             return isFilled;
         }
-        public void Show() //Отображение содержимого сумки
+        public void Show() // Отображение содержимого сумки
         {
-            Console.Write("Содержимое сумки:\n");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("Содержимое сумки: ");
+            Console.ResetColor();
+
             for (int i = 0; i < items.Length; i++)
             {
                 if (items[i] != null)
                 {
-                    Console.Write($"{items[i].GetName()} | ");
+                    Console.Write(items[i].GetName() + " | ");
                 }
-                else Console.Write(" | ");
+                else
+                {
+                    Console.Write(" | ");
+                }
             }
+
+            Console.WriteLine();
         }
+
+        private Item[] items = new Item[8];
+
+        private bool isOpen;
+        private bool isFilled;
     }
 }
