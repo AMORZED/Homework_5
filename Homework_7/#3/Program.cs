@@ -6,10 +6,12 @@ namespace Homework_7
     {
         static void Main(string[] args)
         {
-            Stack st = new Stack(); //Объектная переменная для класса Stack
+            Stack st = new Stack(10);
 
             st.Show();
-            Console.WriteLine($"Удален элемент со значением \"{st.Pop()}\"");
+            st.Pop();
+            st.Show();
+            st.Push(666);
             st.Show();
         }
 

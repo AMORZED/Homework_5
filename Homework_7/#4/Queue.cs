@@ -1,61 +1,84 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace _Queue
+﻿namespace _Queue
 {
     public class Queue
-    {
-        private object[] queue = new object[5] { "String", 27015, 15.32D, 'A', default(bool) };
-        public void Show() //Отображение текущего содержимого очереди
-        {
-            Console.WriteLine("Текущее содержимое очереди:");
-            for (int i = 0; i < queue.Length; i++)
+    {      
+        
+        public Queue(int length) 
+        { 
+            Random rnd = new Random();
+            int[] newQueue = new int[length];
+
+            for (int i = 0; i < length; i++)
             {
-                Console.Write(queue[i] + " | ");
+                newQueue[i] = rnd.Next(1, 101);
             }
-            Console.WriteLine("\n");
+
+            queue = newQueue;
         }
 
-        public void IsEmpty() //Проверка очереди на наличие элементов
+        public void Show() // Отображение текущего содержимого очереди
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Текущее содержимое очереди:");
+            Console.ResetColor();
+
+            for (int i = 0; i < queue.Length; i++)
+            {
+                Console.Write(queue[i] + " ");
+            }
+
+            Console.WriteLine();
+        }
+
+        public void IsEmpty() // Проверка очереди на наличие элементов
         {
             if (queue.Length == 0 | queue == null) Console.WriteLine("Очередь пуста!");
             else Console.WriteLine("Очередь не пуста!");
             Console.WriteLine();
         }
 
-        public void Push(object newMember) //Запись нового элемента в очередь
+        public void Push(int newMember) // Запись нового элемента в очередь
         {
             Array.Resize(ref queue, queue.Length + 1);
             queue[queue.Length - 1] = newMember;
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"В очередь добавлен элемент со значением '{newMember}'!");
+            Console.ResetColor();
         }
 
-        public object Pop() //Возврат первого элемента из очереди и удаление его из очереди
+        public int Pop() // Возврат первого элемента из очереди и удаление его из очереди
         {
-            object lastRemovedMember; //Переменная для записи удаленного элемента
+            int lastRemovedMember;
             
-            if (queue.Length == 0 | queue == null)
+            if (queue.Length == 0)
             {
                 Console.WriteLine("Очередь пуста!");
-                return lastRemovedMember = null;
+                return 0;
             }
             else
             {
                 lastRemovedMember = queue[0];
-                for (int i = 0, j = 1; i < queue.Length & j < queue.Length; i++, j++) //Смещение элементов очереди на -1
+                for (int i = 0, j = 1; i < queue.Length & j < queue.Length; i++, j++)
                 {
                     queue[i] = queue[j];
                 }
-                Array.Resize(ref queue, queue.Length - 1); //Удаление последнего элемнта очереди
+                Array.Resize(ref queue, queue.Length - 1);
+
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Из очереди удален элемент со значением '{lastRemovedMember}'!");
+                Console.ResetColor();
+
                 return lastRemovedMember;
             }
         }
-        public void Size() //Отображение размера очереди
+        public void Size() // Отображение размера очереди
         {
+            Console.ForegroundColor= ConsoleColor.Yellow;
             Console.WriteLine("Кол-во элементов в очереди: " + queue.Length);
+            Console.ResetColor();
         }
+
+        private int[] queue;
     }
 }

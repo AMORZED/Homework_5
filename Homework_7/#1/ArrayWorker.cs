@@ -16,5 +16,26 @@ namespace _ArrayWorker
                 invertedArray[i] = originalArray[j];
             }
         }
+
+        public static void ShowArray(int[] array)
+        {
+            for (int i = 0; i < array.Length; i++)
+            {
+                Console.Write($"{array[i]} ");
+            }
+        }
+
+        public static int[] CreateArrayWithRandomNumbers(int lengthOfArray)
+        {
+            int[] array = new int[lengthOfArray];
+            Random rnd = new Random();
+
+            for (int i = 0;i < array.Length;i++)
+            {
+                array[i] = rnd.Next(1, 101);
+            }
+
+            return array;
+        }
     }
 }

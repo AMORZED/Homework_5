@@ -6,14 +6,14 @@ namespace Homework_7
     {
         static void Main(string[] args)
         {
-            Queue q = new Queue();
+            Queue q = new Queue(10);
             q.Show();
-            Console.WriteLine($"Удален элемент со значением \"{q.Pop()}\"");
+            q.Pop();
             q.Show();
-            q.Push("IT Academy");
-            q.Push(":)");
+            q.Push(666);
+            q.Push(228);
             q.Show();
-            Console.WriteLine($"Удален элемент со значением \"{q.Pop()}\"");
+            q.Pop();
             q.Show();
         }
     }
