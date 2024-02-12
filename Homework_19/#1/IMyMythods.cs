@@ -24,12 +24,19 @@ namespace IMMyMythods
 		void Cycle_2();
 
 		/// <summary>
-		/// Запускает два метода парралельно с возможностью отмены через токен.
+		/// Запускает два метода асинхронно с возможностью отмены через токен.
 		/// </summary>
 		/// <param name="act1">Первый метод.</param>
 		/// <param name="act2">Второй метод.</param>
 		/// <param name="token">Токен для отмены задач.</param>
 		/// <returns>Завершение задачи.</returns>
 		Task StartTheMethods(Action act1, Action act2, CancellationToken token);
+
+		/// <summary>
+		/// Посылает запрос на отмену токену через указанное время.
+		/// </summary>
+		/// <param name="kts">Токен.</param>
+		/// <param name="time">Время, через которое будет послан запрос на отмену.</param>
+		void CallCancelRequest(CancellationTokenSource kts, int time);
 	}
 }

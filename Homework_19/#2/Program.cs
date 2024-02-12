@@ -19,7 +19,7 @@ namespace PProgram
 		{
 			MyMethods myMem = new MyMethods();
 
-			myMem.WriteThreeWordsThrowContinion("Hello", " from ", "callback", 1000);
+			myMem.WriteThreeWordsThrowContinion("Hello", "from", "callback", 1000);
 		}
 	}
 }

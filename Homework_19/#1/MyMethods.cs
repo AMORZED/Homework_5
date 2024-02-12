@@ -17,36 +17,39 @@ namespace MMyMethods
 		/// <inheritdoc/>
 		public void Cycle_1()
 		{
-			Console.WriteLine($"ЗАПУЩЕН ЦИКЛ...");
+			Console.WriteLine($"ЗАПУЩЕН ЦИКЛ (#1)...");
 			for (int i = 1; i <= 5; i++)
 			{
 				Thread.Sleep(750);
 				Console.WriteLine(i);
 			}
-
-			Console.WriteLine();
 		}
 
 		/// <inheritdoc/>
 		public void Cycle_2()
 		{
-			Console.WriteLine($"ЗАПУЩЕН ЦИКЛ...");
+			Console.WriteLine($"ЗАПУЩЕН ЦИКЛ (#2)...");
 
 			char x = 'A';
 			for (int i = 0; i <= 4; i++)
 			{
 				Thread.Sleep(750);
-				Console.WriteLine((char)(i + x));
+				Console.WriteLine(new string(' ', 2) + (char)(i + x));
 			}
-
-			Console.WriteLine();
 		}
 
 		/// <inheritdoc/>
 		public async Task StartTheMethods(Action act1, Action act2, CancellationToken token)
 		{
-			await Task.Run(() => { act1(); }, token);
-			await Task.Run(() => { act2(); }, token);
+			Task.Run(() => { act1(); }, token);
+			Task.Run(() => { act2(); }, token);
+		}
+
+		/// <inheritdoc/>
+		public void CallCancelRequest(CancellationTokenSource kts, int time)
+		{
+			Thread.Sleep(time);
+			kts.Cancel();
 		}
 	}
 }

@@ -17,31 +17,30 @@ namespace MMyMethods
 		/// <inheritdoc/>
 		public string MergeText(string text1, string text2)
 		{
-			return text1 + text2;
+			string result = text1 + " " + text2;
+			return result;
 		}
 
 		/// <inheritdoc/>
 		public void WriteThreeWordsThrowContinion(string word1, string word2, string word3, int time)
 		{
-			Task<string> task_1 = new Task<string>(() => this.myMem.MergeText(string.Empty, word1));
+			Task<string> task_1 = new Task<string>(() => this.MergeText(string.Empty, word1));
 			task_1.Start();
 
 			Thread.Sleep(time);
 			Console.WriteLine($"Промежуточный результат - '{task_1.Result}'");
 
-			Task<string> task_2 = task_1.ContinueWith(t => this.myMem.MergeText(task_1.Result, word2));
+			Task<string> task_2 = task_1.ContinueWith(t => this.MergeText(task_1.Result, word2));
 
 			Thread.Sleep(time);
 			Console.WriteLine($"Промежуточный результат - '{task_2.Result}'");
 
-			Task<string> task_3 = task_2.ContinueWith(t => this.myMem.MergeText(task_2.Result, word3));
+			Task<string> task_3 = task_2.ContinueWith(t => this.MergeText(task_2.Result, word3));
 
 			task_3.Wait();
 
 			Thread.Sleep(time);
 			Console.WriteLine($"Промежуточный результат - '{task_3.Result}'");
 		}
-
-		private MyMethods myMem = new MyMethods();
 	}
 }

@@ -1,21 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿// <copyright file="Program.cs" company="Alexei Morozov">
+// Copyright (C) Alexei Morozov. All rights reserved.
+// </copyright>
+
+using System;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Runtime.InteropServices;
 using MMyMethods;
-using System.Security.Cryptography.X509Certificates;
 
 namespace PProgram
 {
+	/// <summary>
+	/// Класс главной программы.
+	/// </summary>
 	internal class Program
 	{
-		async static Task Main(string[] args)
+		/// <summary>
+		/// Главный метод.
+		/// </summary>
+		/// <param name="args">Параметры.</param>
+		/// <returns>A <see cref="Task"/> representing the result of the asynchronous operation.</returns>
+		internal static async Task Main(string[] args)
 		{
-			MyMethods myMem = new MyMethods();
-
+			MyMethods myMeth = new MyMethods();
 			CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
 			CancellationToken token = cancelTokenSource.Token;
 			token.Register(() =>
@@ -25,19 +31,10 @@ namespace PProgram
 				Console.ResetColor();
 			});
 
-			Task.Run(() => CallCancelRequest()); // Посылает запрос на отмену операции через указанное время
-
-			await myMem.StartTheMethods(myMem.Cycle_1, myMem.Cycle_2, token);
+			myMeth.StartTheMethods(myMeth.Cycle_1, myMeth.Cycle_2, token);
+			await Task.Run(() => myMeth.CallCancelRequest(cancelTokenSource, 2000));
 
 			Console.WriteLine("ГЛАВНЫЙ МЕТОД ЗАВЕРШИЛ РАБОТУ!");
-
-
-
-			void CallCancelRequest()
-			{
-				Thread.Sleep(2000);
-				cancelTokenSource.Cancel();
-			}
 		}
 	}
 }
