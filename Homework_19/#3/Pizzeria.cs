@@ -20,27 +20,17 @@ namespace PPizzeria
 		public Pizzeria(int maxWorkers)
 		{
 			this.MaxWorkers = maxWorkers;
+			this.semaphore = new Semaphore(maxWorkers, maxWorkers);
 		}
 
 		/// <inheritdoc/>
-		public int MaxWorkers
-		{
-			get
-			{
-				return this.MaxWorkers;
-			}
-
-			private set
-			{
-				this.sm = new Semaphore(value, value);
-			}
-		}
+		public int MaxWorkers { get; private set; }
 
 		/// <inheritdoc/>
-		public void StartCook(int employeesNumber)
+		public void StartCook(int employeeNumber)
 		{
 			Thread myThread = new Thread(this.Cook);
-			myThread.Name = $"#{employeesNumber}";
+			myThread.Name = $"#{employeeNumber}";
 
 			Random rnd = new Random();
 			Thread.Sleep(rnd.Next(1000, 3000));
@@ -54,7 +44,7 @@ namespace PPizzeria
 			Random rnd = new Random();
 			Thread.Sleep(rnd.Next(1000, 3000));
 
-			this.sm.WaitOne();
+			this.semaphore.WaitOne();
 
 			Console.WriteLine($"Работник '{Thread.CurrentThread.Name}' пришел на рабочее место.");
 			Thread.Sleep(rnd.Next(1000, 3000));
@@ -63,9 +53,9 @@ namespace PPizzeria
 			Thread.Sleep(rnd.Next(1000, 3000));
 
 			Console.WriteLine($"Работник '{Thread.CurrentThread.Name}' приготовил пиццу!");
-			this.sm.Release();
+			this.semaphore.Release();
 		}
 
-		private Semaphore sm;
+		private Semaphore semaphore;
 	}
 }
